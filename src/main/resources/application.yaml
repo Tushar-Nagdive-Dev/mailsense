@@ -5,16 +5,10 @@ spring:
   application:
     name: mailsense
   datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:mailsensedb}
-    username: ${DB_USER:mailsense}
-    password: ${DB_PASSWORD:mailsense}
-    driver-class-name: org.postgresql.Driver
-    hikari:
-      maximum-pool-size: 10
-      minimum-idle: 2
-      idle-timeout: 600000  # 10 min
-      max-lifetime: 1800000  # 30 min
-      connection-timeout: 30000 # 30 sec
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: ${DB_DRIVER}
 
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
@@ -56,13 +50,10 @@ oauth:
 encryption:
   key: ${ENCRYPTION_KEY} # must be 32 bytes for AES-256-GCM; store safely
 
-flyway:
+# replace any existing liquibase.change-log value
+liquibase:
   enabled: true
-  baseline-on-migrate: true
-  locations: classpath:db/migration
-  url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:mailsensedb}
-  username: ${DB_USER:mailsense}
-  password: ${DB_PASSWORD:mailsense}
+  change-log: classpath:db/changelog/db.changelog-master.yaml
 
 logging:
   level:

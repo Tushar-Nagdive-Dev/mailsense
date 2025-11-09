@@ -32,12 +32,13 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     // ... your existing dependencies
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.postgresql:postgresql")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
-    // Flyway Dependency
-    implementation("org.flywaydb:flyway-core")
+    // Liquibase runtime (Spring Boot will run it on startup)
+    implementation("org.liquibase:liquibase-core:4.23.2")
+    // Postgres JDBC
+    runtimeOnly("org.postgresql:postgresql:42.6.0")
 
     testImplementation("com.h2database:h2:2.2.222")
 
@@ -53,6 +54,10 @@ dependencies {
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.5")
+
+    // .env support
+    implementation("me.paulschwarz:spring-dotenv:4.0.0")
+
 }
 
 tasks.withType<Test> {
