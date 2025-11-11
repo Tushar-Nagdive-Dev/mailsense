@@ -1,0 +1,68 @@
+.
+├── build.gradle.kts
+├── gradle
+│   └── wrapper
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+├── gradlew
+├── gradlew.bat
+├── JSONS
+│   ├── database-setup.sql
+│   └── googleAuth2.json
+├── LICENSE
+├── mailsense.txt
+├── README.md
+├── settings.gradle.kts
+└── src
+    ├── main
+    │   ├── java
+    │   │   └── org
+    │   │       └── inn
+    │   │           └── mailsense
+    │   │               ├── MailsenseApplication.java
+    │   │               └── users
+    │   │                   ├── config
+    │   │                   │   ├── AesGcmEncryptor.java
+    │   │                   │   ├── JwtUtil.java
+    │   │                   │   └── OAuth2Client.java
+    │   │                   ├── controller
+    │   │                   │   └── AuthController.java
+    │   │                   ├── dtos
+    │   │                   │   ├── AuthorizeResponseDto.java
+    │   │                   │   ├── AuthResultDto.java
+    │   │                   │   ├── LoginDto.java
+    │   │                   │   └── SignupDto.java
+    │   │                   ├── entity
+    │   │                   │   ├── UserMailbox.java
+    │   │                   │   ├── Users.java
+    │   │                   │   └── UserSession.java
+    │   │                   ├── repo
+    │   │                   │   ├── UserMailboxRepository.java
+    │   │                   │   ├── UserSessionRepository.java
+    │   │                   │   └── UsersRepository.java
+    │   │                   └── service
+    │   │                       ├── AuthService.java
+    │   │                       ├── impl
+    │   │                       │   ├── AuthServiceImpl.java
+    │   │                       │   └── MailboxServiceImpl.java
+    │   │                       └── MailboxService.java
+    │   └── resources
+    │       ├── application.yaml
+    │       ├── db
+    │       │   ├── changelog
+    │       │   │   ├── db.changelog-master.json
+    │       │   │   └── db.changelog-users.json
+    │       │   └── migration
+    │       │       └── V1__create_users_and_mailboxes.sql
+    │       ├── static
+    │       └── templates
+    └── test
+        ├── java
+        │   └── org
+        │       └── inn
+        │           └── mailsense
+        │               └── MailsenseApplicationTests.java
+        └── resources
+            └── application.yaml
+
+30 directories, 36 files

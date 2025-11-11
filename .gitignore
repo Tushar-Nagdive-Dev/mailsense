@@ -32,4 +32,8 @@ gradlew
 gradlew.bat
 .env
 
-JSONS
+JSONS/
+
+# Angular App
+views/mailSenseUI/node_modules
+views/mailSenseUI/.vscode
