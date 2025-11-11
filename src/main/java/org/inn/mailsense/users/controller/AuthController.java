@@ -1,6 +1,7 @@
 package org.inn.mailsense.users.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.inn.mailsense.users.dtos.AuthResultDto;
 import org.inn.mailsense.users.dtos.LoginDto;
@@ -25,13 +26,28 @@ public class AuthController {
         return ResponseEntity.status(302).location(URI.create(url)).build();
     }
 
+//    @GetMapping("/oauth2/callback")
+//    public ResponseEntity<AuthResultDto> callback(@RequestParam String provider, @RequestParam String code, @RequestParam String state, HttpServletRequest request) throws Exception {
+//        String ip = request.getRemoteAddr();
+//        String ua = request.getHeader("User-Agent");
+//        AuthResultDto res = authService.handleGoogleCallback(provider, code, redirectUri(provider), ip, ua);
+//        return ResponseEntity.ok(res);
+//    }
+
     @GetMapping("/oauth2/callback")
-    public ResponseEntity<AuthResultDto> callback(@RequestParam String provider, @RequestParam String code, @RequestParam String state, HttpServletRequest request) throws Exception {
-        String ip = request.getRemoteAddr();
-        String ua = request.getHeader("User-Agent");
-        AuthResultDto res = authService.handleGoogleCallback(provider, code, redirectUri(provider), ip, ua);
-        return ResponseEntity.ok(res);
+    public void callback(
+            @RequestParam String provider,
+            @RequestParam String code,
+            @RequestParam(required = false) String state,
+            HttpServletResponse response) throws Exception {
+
+        AuthResultDto res = authService.handleGoogleCallback(provider, code, redirectUri(provider), "0.0.0.0", "browser");
+
+        // Persist user/session, then redirect back to Angular with status
+        String redirectUrl = "http://localhost:4200/auth/success?accessToken=" + res.accessToken();
+        response.sendRedirect(redirectUrl);
     }
+
 
     // helper to build the redirectUri expected earlier (should match url used to build authorization)
     private String redirectUri(String provider) {
