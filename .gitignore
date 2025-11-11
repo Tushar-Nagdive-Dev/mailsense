@@ -33,6 +33,7 @@ gradlew.bat
 .env
 
 JSONS/
+logs/
 
 # Angular App
 views/mailSenseUI/node_modules
