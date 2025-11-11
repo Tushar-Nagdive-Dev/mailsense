@@ -9,6 +9,7 @@ import org.inn.mailsense.users.service.AuthService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.Map;
 
 @RestController
@@ -21,7 +22,7 @@ public class AuthController {
     @GetMapping("/oauth2/authorize")
     public ResponseEntity<Map<String, String>> authorize(@RequestParam String provider, @RequestParam String redirectUri, @RequestParam(required = false) String state) {
         String url = authService.buildAuthorizationUrl(provider, redirectUri, state);
-        return ResponseEntity.ok(Map.of("url", url));
+        return ResponseEntity.status(302).location(URI.create(url)).build();
     }
 
     @GetMapping("/oauth2/callback")
