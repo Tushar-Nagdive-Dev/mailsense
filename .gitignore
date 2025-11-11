@@ -37,3 +37,5 @@ JSONS/
 # Angular App
 views/mailSenseUI/node_modules
 views/mailSenseUI/.vscode
+views/mailSenseUI/.angular
+views/mailSenseUI/dist
