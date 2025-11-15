@@ -1,0 +1,98 @@
+.
+├── build.gradle.kts
+├── gradle
+│   └── wrapper
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+├── gradlew
+├── gradlew.bat
+├── JSONS
+│   ├── database-setup.sql
+│   └── googleAuth2.json
+├── LICENSE
+├── logs
+│   └── mailsense.log
+├── mailsense.txt
+├── README.md
+├── settings.gradle.kts
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── org
+│   │   │       └── inn
+│   │   │           └── mailsense
+│   │   │               ├── MailsenseApplication.java
+│   │   │               └── users
+│   │   │                   ├── config
+│   │   │                   │   ├── AesGcmEncryptor.java
+│   │   │                   │   ├── JwtUtil.java
+│   │   │                   │   ├── OAuth2Client.java
+│   │   │                   │   └── SecurityBeans.java
+│   │   │                   ├── controller
+│   │   │                   │   └── AuthController.java
+│   │   │                   ├── dtos
+│   │   │                   │   ├── AuthorizeResponseDto.java
+│   │   │                   │   ├── AuthResultDto.java
+│   │   │                   │   ├── LoginDto.java
+│   │   │                   │   └── SignupDto.java
+│   │   │                   ├── entity
+│   │   │                   │   ├── UserMailbox.java
+│   │   │                   │   ├── Users.java
+│   │   │                   │   └── UserSession.java
+│   │   │                   ├── repo
+│   │   │                   │   ├── UserMailboxRepository.java
+│   │   │                   │   ├── UserSessionRepository.java
+│   │   │                   │   └── UsersRepository.java
+│   │   │                   └── service
+│   │   │                       ├── AuthService.java
+│   │   │                       ├── impl
+│   │   │                       │   ├── AuthServiceImpl.java
+│   │   │                       │   └── MailboxServiceImpl.java
+│   │   │                       └── MailboxService.java
+│   │   └── resources
+│   │       ├── application.yaml
+│   │       ├── db
+│   │       │   └── changelog
+│   │       │       ├── db.changelog-master.yaml
+│   │       │       └── db.changelog-users.json
+│   │       ├── static
+│   │       └── templates
+│   └── test
+│       ├── java
+│       │   └── org
+│       │       └── inn
+│       │           └── mailsense
+│       │               └── MailsenseApplicationTests.java
+│       └── resources
+│           └── application.yaml
+└── views
+    └── mailSenseUI
+        ├── angular.json
+        ├── package-lock.json
+        ├── package.json
+        ├── proxy.conf.json
+        ├── public
+        │   └── favicon.ico
+        ├── README.md
+        ├── src
+        │   ├── app
+        │   │   ├── app.component.html
+        │   │   ├── app.component.scss
+        │   │   ├── app.component.spec.ts
+        │   │   ├── app.component.ts
+        │   │   ├── app.config.server.ts
+        │   │   ├── app.config.ts
+        │   │   ├── app.routes.server.ts
+        │   │   └── app.routes.ts
+        │   ├── environments
+        │   │   └── environment.ts
+        │   ├── index.html
+        │   ├── main.server.ts
+        │   ├── main.ts
+        │   ├── server.ts
+        │   └── styles.scss
+        ├── tsconfig.app.json
+        ├── tsconfig.json
+        └── tsconfig.spec.json
+
+36 directories, 60 files

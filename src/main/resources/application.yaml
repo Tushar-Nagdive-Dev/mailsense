@@ -3,37 +3,15 @@ server:
 
 spring:
   application:
-    name: mailsense
+    name: MailSense
   datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:mailsensedb}
-    username: ${DB_USER:mailsense}
-    password: ${DB_PASSWORD:mailsense}
-    driver-class-name: org.postgresql.Driver
-    hikari:
-      maximum-pool-size: 10
-      minimum-idle: 2
-      idle-timeout: 600000  # 10 min
-      max-lifetime: 1800000  # 30 min
-      connection-timeout: 30000 # 30 sec
+    url: ${DUCKDB_URL}
+    driver-class-name: ${DUCKDB_DRIVER}
+    initialization-mode: ${DUCKDB_INIT_MODE}
 
-  jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    show-sql: false
-    properties:
-      hibernate:
-        format_sql: true
-    hibernate:
-      ddl-auto: none
-
-flyway:
-  enabled: true
-  baseline-on-migrate: true
-  locations: classpath:db/migration
-  url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:mailsensedb}
-  username: ${DB_USER:mailsense}
-  password: ${DB_PASSWORD:mailsense}
-
-logging:
-  level:
-    root: INFO
-    org.hibernate.SQL: WARN
+# Flyway settings (runs automatically on startup)
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    table: flyway_schema_history

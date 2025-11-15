@@ -31,3 +31,9 @@ gradle
 gradlew
 gradlew.bat
 .env
+
+JSONS/
+logs/
+
+/data/
+*.duckdb
