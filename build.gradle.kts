@@ -25,9 +25,33 @@ repositories {
 }
 
 dependencies {
+    //Spring
+    implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+
+    // Flyway Migration
+    implementation("org.flywaydb:flyway-core")
+    implementation("org.flywaydb:flyway-database-duckdb:10.24.0") // DuckDB plugin for Flyway
+
+    // devtools
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
+
+    // lombok
+    compileOnly("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok")
+
+    // Testing
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
     // .env support
     implementation("me.paulschwarz:spring-dotenv:4.0.0")
-    implementation("org.duckdb:duckdb_jdbc:1.4.0")
+
+    //DuckDB
+    implementation("org.duckdb:duckdb_jdbc:0.2.1")
+
+    // Logging
+    implementation("net.logstash.logback:logstash-logback-encoder:7.4")
 }
 
 tasks.withType<Test> {
